@@ -25,7 +25,7 @@ jobs:
         node-version: '20'  # Use the version of Node.js required by your project
 
     - name: Install dependencies
-      run: yarn install
+      run: corepack enable && yarn cache clean && yarn upgrade && yarn install
 
     - name: Build project
       run: yarn run build
