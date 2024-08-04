@@ -13,22 +13,22 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Setup Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '18'  # Use the version of Node.js required by your project
-
-    - name: Enable Corepack
-      run: corepack enable
-
-    - name: Install dependencies
-      run: yarn config set nodeLinker node-modules && yarn install --immutable --immutable-cache
-
     - name: Composer update
       run: composer update
 
     - name: Composer install
       run: composer install
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '20'  # Use the version of Node.js required by your project
+
+    - name: Enable Corepack
+      run: corepack enable
+
+    - name: Install dependencies
+      run: yarn install
 
     - name: Build project
       run: yarn run build
