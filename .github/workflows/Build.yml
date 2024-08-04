@@ -13,27 +13,25 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
+    - name: Install dependencies
+      run: npm ci
+
+    - name: install sentry vite plugin
+      run: npm install @sentry/vite-plugin --save-dev
+
     - name: Composer update
       run: composer update
 
     - name: Composer install
       run: composer install
 
-    - name: Setup Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '20'  # Use the version of Node.js required by your project
-
-    - name: Install dependencies
-      run: corepack enable && yarn install --force
-
     - name: Build project
-      run: yarn run build
+      run: npm run build
 
     - name: Delete Node Modules
-      run: rm -rf node_modules
+      run: rm node_modules -rf
 
-    - name: Git config
+    - name: git config
       run: |
         git config --global user.email "jonas@vahajo.be"
         git config --global user.name "Github Actions"
