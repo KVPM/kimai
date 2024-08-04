@@ -4,7 +4,7 @@ const Encore = require('@symfony/webpack-encore');
 
 Encore
     .setOutputPath('public/build/')
-    .setPublicPath('/build/')
+    .setPublicPath('/kimai/build/')
     .setManifestKeyPrefix('build/')
     .cleanupOutputBeforeBuild()
 
