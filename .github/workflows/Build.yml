@@ -22,7 +22,7 @@ jobs:
       run: corepack enable
 
     - name: Install dependencies
-      run: yarn install --immutable --immutable-cache
+      run: yarn install
 
     - name: Composer update
       run: composer update
