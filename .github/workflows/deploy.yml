@@ -1,0 +1,22 @@
+name: Deployment Workflow
+
+on:
+  workflow_run:
+    workflows: [ "Build workflow" ]
+    types:
+      - completed
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy on one.com
+        uses: fifsky/ssh-action@master
+        with:
+          command: |
+            sh /www/kimai/deployscript.sh
+          host: ${{ secrets.HOST }}
+          user: kleinvossenpark.be
+          key: ${{ secrets.PRIVATE_KEY}}
+          
